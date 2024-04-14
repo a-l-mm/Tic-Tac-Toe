@@ -10,3 +10,22 @@ def checkSpace(position, spots):
 def checkTurn(turn):
     if turn % 2 == 0: return 'X'
     else: return 'O'
+def aiMove(spots):
+    for position in range(1, 10):
+        if checkSpace(position, spots):
+            spots[position] = 'O'
+            if checkForWin(spots):
+                spots[position] = str(position)
+                return position
+            spots[position] = str(position)
+    
+    for position in range(1, 10):
+        if checkSpace(position, spots):
+            spots[position] = 'X'
+            if checkForWin(spots):
+                spots[position] = str(position)
+                return position
+            spots[position] = str(position)
+    
+    emptySpots = [position for position in range(1, 10) if checkSpace(position, spots)]
+    return random.choice(emptySpots)

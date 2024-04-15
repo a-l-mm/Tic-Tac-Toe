@@ -1,5 +1,6 @@
 from setup import drawBoard, checkTurn, checkForWin, checkSpace, aiMove
 import os
+import time
 spots = {1 : '1', 2 : '2', 3 : '3', 4 : '4', 5 : '5', 6 : '6', 7 : '7', 8 : '8', 9 : '9', }
 
 playing = True
@@ -28,6 +29,7 @@ while playing:
                 print('Inavlid or taken spot, try again.')
     else: 
         print('Choosing...')
+        time.sleep(5)
         choiceAI = aiMove(spots)
         if choiceAI in spots and checkSpace(choiceAI, spots):
             spots[choiceAI] = 'O'
